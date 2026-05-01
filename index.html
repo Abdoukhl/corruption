@@ -174,7 +174,7 @@
             display: flex;
             gap: 15px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
@@ -504,10 +504,10 @@
             let letter = String.fromCharCode(65 + idx);
             html += `<div class="option" data-opt-index="${idx}"><span class="prefix">${letter}</span> ${opt}</div>`;
         });
-        html += `</div><div class="action-buttons">
+        html += `</div><div id="explainArea"></div><div class="action-buttons">
             <button class="btn-next" id="nextBtn">➡️ التالي</button>
             <button class="btn-reset" id="resetBtn">🔄 إعادة الاختبار</button>
-        </div><div id="explainArea"></div></div>`;
+        </div></div>`;
         quizDynamic.innerHTML = html;
         answerLock = false;
         selectedIdx = null;
