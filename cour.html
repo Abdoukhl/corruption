@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>اختبار شامل: الفساد وأخلاقيات العمل - 80+ سؤالاً</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 25%, #3b6fa5 50%, #2c5282 75%, #1e3a5f 100%);
+            font-family: 'Cairo', 'Tajawal', 'Segoe UI', sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        /* تصميم عصري مع تأثير زجاجي */
+        .game-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(30, 58, 95, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 60px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+            padding: 25px 30px 40px;
+            border: 1px solid rgba(100, 150, 255, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ffffff, #e6f3ff, #b3d9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .sub {
+            text-align: center;
+            color: #d4e6ff;
+            border-bottom: 3px solid #6495ff40;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* بطاقات الإحصائيات */
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            background: linear-gradient(145deg, rgba(20, 40, 70, 0.8), rgba(30, 50, 80, 0.8));
+            padding: 15px 30px;
+            border-radius: 80px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 1px solid rgba(100, 150, 255, 0.2);
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, #3a6fa5, #2a5a8a);
+            padding: 10px 25px;
+            border-radius: 60px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        /* بطاقة السؤال */
+        .question-card {
+            background: linear-gradient(145deg, rgba(50, 80, 120, 0.95), rgba(40, 70, 110, 0.95));
+            border-radius: 55px;
+            padding: 30px 35px;
+            margin-bottom: 30px;
+            border-right: 8px solid #6495ff;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .question-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
+
+        .options-area {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 25px;
+            margin-top: 10px;
+        }
+
+        .option {
+            background: linear-gradient(145deg, #2a5a8a, #1e4a7a);
+            padding: 16px 25px;
+            border-radius: 65px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #4a7fb8;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ffffff;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .option:hover:not(.disabled-opt) {
+            background: linear-gradient(145deg, #3a6fa5, #2a5a8a);
+            transform: translateX(8px) translateY(-2px);
+            border-color: #8bb4ff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .prefix {
+            background: linear-gradient(145deg, #4a7fb8, #2a5a8a);
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            color: #ffffff;
+        }
+
+        .correct-feedback {
+            background: #2a7a4acc;
+            border-right: 6px solid #6aff6a;
+            color: #ffffff;
+        }
+
+        .wrong-feedback {
+            background: #cc4444cc;
+            border-right: 6px solid #ffb3b3;
+            color: #ffffff;
+        }
+
+        .disabled-opt {
+            cursor: default;
+            opacity: 0.9;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        button {
+            background: linear-gradient(145deg, #4a7fb8, #2a5a8a);
+            border: none;
+            padding: 14px 40px;
+            border-radius: 55px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            box-shadow: 0 8px 0 #2a5a8a, 0 10px 20px rgba(0,0,0,0.3);
+            font-family: inherit;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 0 #2a5a8a, 0 12px 25px rgba(0,0,0,0.4);
+        }
+
+        .btn-next {
+            background: linear-gradient(145deg, #6495ff, #4a7fb8);
+            color: #ffffff;
+            box-shadow: 0 8px 0 #4a7fb8, 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-next:hover {
+            box-shadow: 0 10px 0 #4a7fb8, 0 12px 25px rgba(0,0,0,0.4);
+        }
+
+        .btn-reset:hover {
+            box-shadow: 0 10px 0 #3a6fa5, 0 12px 25px rgba(0,0,0,0.4);
+        }
+
+        .badge {
+            background: linear-gradient(95deg, #4a7fb8, #2a5a8a, #1e4a7a);
+            display: inline-block;
+            border-radius: 35px;
+            padding: 6px 20px;
+            font-size: 0.8rem;
+            margin-bottom: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .final-score, .mistakes-panel {
+            background: linear-gradient(145deg, rgba(20, 40, 70, 0.95), rgba(30, 50, 80, 0.95));
+            padding: 30px;
+            border-radius: 55px;
+            margin-top: 25px;
+            color: #ffffff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .mistake-item {
+            background: linear-gradient(145deg, rgba(40, 70, 110, 0.95), rgba(50, 80, 120, 0.95));
+            margin: 18px 0;
+            padding: 18px;
+            border-radius: 35px;
+            border-right: 6px solid #6495ff;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
+        }
+
+        .mistake-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+<div class="game-container" id="quizRoot">
+    <h1>📚 اختبار الفساد وأخلاقيات العمل</h1>
+    <div class="sub">يغطي: مفاهيم، أنواع، مظاهر، أسباب، آثار، مكافحة، مصطلحات (عربي/فرنسي/إنجليزي)</div>
+    <div class="stats-bar">
+        <div class="stat-card">📋 السؤال <span id="currentQ">0</span> / <span id="totalQ">0</span></div>
+        <div class="stat-card">✅ صحيح <span id="scoreCount">0</span></div>
+        <div class="stat-card">🏆 النتيجة <span id="percentScore">0</span>%</div>
+    </div>
+    <div id="quizDynamic"></div>
+    <div id="finalMessage"></div>
+</div>
+
+<script>
+    // ====================== بنك الأسئلة (80+ سؤال من الملفات الستة) ======================
+    let questionsBank = [];
+
+    function addQCM(question, options, correctIndex, explanation, isTerm = false, reference = "") {
+        questionsBank.push({ type: "qcm", question, options, correctIndex, explanation, isTerm, reference });
+    }
+
+    // ------------------- الملف 1: chapitre 1.pdf (مفهوم الفساد) -------------------
+    addQCM("في اللغة العربية، الفساد هو ضد:", ["الصلاح", "الاستقامة", "العدل", "النظام"], 0, "الفساد ضد الصلاح، وخروج الشيء عن الاعتدال.", false, "ص5");
+    addQCM("من صور الفساد في اللغة الفرنسية 'Changement vicieux dans les textes' تعني:", ["تحريف نص", "رشوة قاضي", "اغتصاب السلطة", "تدمير"], 0, "صفحة 6: تحريف نص.", false, "ص6");
+    addQCM("حسب قاموس أكسفورد، الفساد في الإنجليزية يشمل 'Immoral, Bribery, Fraud' وأيضاً:", ["Misuse of authority and power", "Tax evasion", "Money laundry", "تزوير"], 0, "صفحة 7: إساءة استعمال السلطة والنفوذ والمحسوبية.", false, "ص7");
+    addQCM("البنك الدولي يعرف الفساد بأنه:", ["سوء استغلال السلطة العامة من أجل الحصول على مكاسب خاصة", "الرشوة فقط", "الاختلاس", "الفساد المالي"], 0, "صفحة 8: سوء استغلال السلطة العامة لتحقيق مكاسب خاصة.", false, "ص8");
+    addQCM("منظمة الشفافية الدولية تعرف الفساد بأنه سلوك يمارسه المسؤولون بهدف إثراء أنفسهم عبر:", ["سوء استغلال السلطة الممنوحة لهم", "الاحتيال", "غسيل الأموال", "التهرب"], 0, "صفحة 8: عبر سوء استغلالهم للسلطة الممنوحة لهم.", false, "ص8");
+    addQCM("لماذا لم تتوصل الأمم المتحدة إلى تعريف موحد للفساد؟", ["ركزت على صور الفساد فقط كالرشوة والاختلاس", "لعدم وجود إجماع", "لرفض الدول", "مفهوم نسبي"], 0, "صفحة 9: عدم الاتفاق جعلها تبرز صور الفساد فقط.", false, "ص9");
+    addQCM("كم مرة ورد لفظ الفساد ومشتقاته في القرآن الكريم؟", ["خمسين مرة", "أربعين", "ستين", "ثلاثين"], 0, "صفحة 10: جاء الفساد بخمسين مرة.", false, "ص10");
+    addQCM("حديث معاوية 'إنما الأعمال كالوعاء' يدل على:", ["إذا فسد الأسفل فسد الأعلى", "أهمية القيادة", "الفساد المالي", "الشفافية"], 0, "صفحة 11: فساد الأساس يؤدي لفساد الأعلى.", false, "ص11");
+    addQCM("قال تعالى 'والله لا يحب الفساد' وردت في سورة:", ["البقرة", "محمد", "المائدة", "الأنعام"], 0, "صفحة 10: سورة البقرة آية 205.", false, "ص10");
+
+    // ------------------- الملف 2: أنواع الفساد.pdf -------------------
+    addQCM("من أنواع الفساد حسب المحتوى: المالي، الإداري، الأخلاقي، السياسي، إضافة إلى:", ["الثقافي، القضائي، الاقتصادي، البيئي", "العائلي", "الرياضي", "الإلكتروني"], 0, "صفحات 4-13: فساد ثقافي، قضائي، اقتصادي، بيئي.", false, "ص4-13");
+    addQCM("الفساد المالي يتمثل في:", ["غسل الأموال والتهرب الضريبي وتزييف العملة", "الواسطة فقط", "الرشوة فقط", "إهدار الوقت"], 0, "صفحة 5: غسل الأموال، التهرب الضريبي، تزييف العملة.", false, "ص5");
+    addQCM("الفساد الإداري يعني الانحرافات التي تصدر عن:", ["الموظف العام أثناء تأدية مهام وظيفته", "المواطنين", "القطاع الخاص فقط", "الشركات"], 0, "صفحة 6: الانحرافات الإدارية الصادرة عن الموظف العام.", false, "ص6");
+    addQCM("الفساد الأخلاقي يؤدي إلى:", ["انتشار الرذيلة والفاحشة", "تحسين الاقتصاد", "نزاهة", "استقرار"], 0, "صفحة 7: يؤدي للانحطاط السلوكي وانتشار الفاحشة.", false, "ص7");
+    addQCM("الفساد السياسي من مظاهره:", ["شعور الناس بأن القانون لا يطبق إلا على البسطاء", "زيادة الشفافية", "مراقبة قوية", "استقرار"], 0, "صفحة 8: شعور بأن القانون لا يطبق إلا على البسطاء.", false, "ص8");
+    addQCM("الفساد الثقافي يصعب إدانته لأنه يتحصن وراء:", ["حرية الرأي والتعبير والإبداع", "الدين", "التقاليد", "السرية"], 0, "صفحة 9: لتحصنه وراء حرية الرأي والتعبير.", false, "ص9");
+    addQCM("الفساد الاجتماعي ينتج عن تنشئة فاسدة ويؤدي إلى:", ["عدم تقبل الولاء الوظيفي وعدم احترام الرؤساء", "زيادة الإنتاج", "تحسن الخدمات", "تعزيز الديمقراطية"], 0, "صفحة 10: تنشئة فاسدة تؤدي لعدم تقبل الولاء الوظيفي.", false, "ص10");
+    addQCM("الفساد القضائي من أخطر الأنواع لأنه:", ["السلطة التي يعول عليها الناس لإعادة حقوقهم", "يؤثر على الاقتصاد فقط", "سهل الاكتشاف", "غير مؤثر"], 0, "صفحة 11: الناس تعول على القضاء لإعادة حقوقهم.", false, "ص11");
+    addQCM("الفساد الاقتصادي يشمل ممارسات مثل:", ["الغش التجاري والتلاعب بالأسعار وتهريب الأموال", "الرشوة في المدارس", "المحاباة فقط", "تلوث"], 0, "صفحة 12: الغش التجاري، التلاعب بالأسعار، تهريب الأموال.", false, "ص12");
+    addQCM("الفساد البيئي يشمل:", ["القطع الجائر للغابات بغرض المتاجرة غير القانونية", "الزراعة", "إعادة التدوير", "التلوث البسيط"], 0, "صفحة 13: القطع الجائر للغابات بسبب رشوة المسؤولين.", false, "ص13");
+
+    // ------------------- الملف 3: مظاهر الفساد الإداري والمالي.pdf -------------------
+    addQCM("الرشوة وفق القانون الجزائري (المادة 127) تعتبر 'مرتشياً' كل موظف:", ["طلب أو قبل عطية", "قدم هدية", "أهمل العمل", "تأخر"], 0, "صفحة 4: يعد مرتشيا كل عامل طلب أو قبل عطية.", false, "ص4");
+    addQCM("الاختلاس يعني:", ["تحويل الموظف للمال من ملكية ناقصة إلى ملكية تامة", "إعطاء قروض", "الغش", "الرشوة"], 0, "صفحة 4: تحويل المال من ملكية ناقصة ومؤقتة إلى تامة.", false, "ص4");
+    addQCM("المحاباة في منح المقاولات:", ["تفضيل جهة على أخرى بغير وجه حق", "الشفافية", "المنافسة", "المراقبة"], 0, "صفحة 5: تفضيل جهة على أخرى بغير وجه حق.", false, "ص5");
+    addQCM("الوساطة (الواسطة) ترجع أسبابها إلى:", ["دور البيروقراطية والتفاوت الاجتماعي ومستوى انتشار التعليم", "القوانين الصارمة", "التكنولوجيا", "الإعلام"], 0, "صفحة 5: التنظيمات البيروقراطية، التفاوت الاجتماعي، مستوى التعليم.", false, "ص5");
+    addQCM("التزوير في الوثائق الرسمية هو:", ["تغيير طبيعة المستندات والإضرار بالغير", "النسخ", "الحفظ", "التوقيع"], 0, "صفحة 6: تغيير طبيعة المستندات والوثائق الرسمية.", false, "ص6");
+    addQCM("الاحتيال يعرف بأنه:", ["تشويه أو تزييف المعلومات والحقائق لتحقيق منافع خاصة", "الرشوة", "الاختلاس", "الولاء"], 0, "صفحة 6: القيام بتشويه أو تزييف المعلومات.", false, "ص6");
+    addQCM("من مظاهر الفساد 'نهب المال العام' ويكثر في:", ["الصفقات العمومية والاستثمارات", "الزراعة", "التعليم", "الصحة"], 0, "صفحة 7: خاصة في مجال الصفقات العمومية.", false, "ص7");
+    addQCM("التباطؤ في إنجاز المعاملات يؤدي إلى:", ["ضياع حقوق الأفراد والعصيان الاجتماعي", "زيادة الكفاءة", "تقليل الفساد", "العدالة"], 0, "صفحة 7: تضييع الحقوق ويؤدي إلى العصيان الاجتماعي.", false, "ص7");
+    addQCM("من المظاهر الأخرى للفساد (صفحة 8):", ["سوء استغلال المال العام، إفشاء السر الوظيفي، التجارة بالبشر", "الشفافية", "الديمقراطية", "حرية التعبير"], 0, "صفحة 8: سوء استغلال المال العام، إفشاء السر، التجارة بالبشر.", false, "ص8");
+
+    // ------------------- الملف 4: أسباب الفساد الإداري والمالي.pdf -------------------
+    addQCM("ضعف المؤسسات كسبب للفساد يعني:", ["ضعف المؤسسات الوقائية والرقابية معاً", "ضعف القضاء فقط", "غياب البرلمان", "ضعف الجيش"], 0, "صفحة 4: المؤسسات الوقائية لم تقم بالتحسيس والرقابية لم تكتشف الفساد.", false, "ص4");
+    addQCM("تضارب المصالح يعني:", ["تأثر موضوعية الموظف بمصلحة شخصية له أو لأقاربه", "صراع بين الإدارات", "تعدد المهام", "الازدواج"], 0, "صفحة 4 و6: الموقف الذي تتأثر فيه الموضوعية بمصلحة شخصية.", false, "ص4,6");
+    addQCM("السعي للربح السريع سبباً للفساد عندما:", ["لا يقنع الموظف بأجرته فيلجأ للرشوة", "يستثمر في البورصة", "يدخر المال", "يشتري أسهماً"], 0, "صفحة 5: الموظف الذي لا يقنع بأجرته قد يلجأ للرشوة.", false, "ص5");
+    addQCM("ضعف دور التوعية في المؤسسات التعليمية والإعلام يؤدي إلى:", ["استفحال ظاهرة الفساد لعدم التحذير من مخاطره", "زيادة الرقابة", "تحسين الاقتصاد", "نزاهة"], 0, "صفحة 5: عدم قيام الوسائط بالدور المنوط بها في التحذير.", false, "ص5");
+    addQCM("عدم تطبيق القانون بشكل صارم (أن تكون للقانون أسنان) يؤدي إلى:", ["غياب الردع وانتشار الفساد", "تقليل الجريمة", "تحسين الأخلاق", "زيادة الثقة"], 0, "صفحة 6: إذا طبقت القوانين على البعض دون الآخر فلا يكون رادع.", false, "ص6");
+
+    // ------------------- الملف 5: آثار الفساد الإداري والمالي.pdf -------------------
+    addQCM("من الأضرار السياسية للفساد:", ["شعور الفقراء بالحرمان مما يؤدي للعنف والثورة", "تحسين الديمقراطية", "استقرار", "تعزيز المساواة"], 0, "صفحة 4: سيدفع الفقيرة إلى العنف والثورة.", false, "ص4");
+    addQCM("الفساد يخلق فجوة بين المواطنين والحكومة مما يدفعهم إلى:", ["مساندة القوى المعارضة للإطاحة بالحكومة", "دفع الضرائب", "زيادة الإنتاج", "الثقة"], 0, "صفحة 4: يدفعهم إلى مساندة القوى المعارضة.", false, "ص4");
+    addQCM("من الأضرار الاجتماعية للفساد:", ["انتشار الجريمة وخلخلة القيم والإحباط والفقر", "التماسك", "انخفاض الجريمة", "الصحة"], 0, "صفحة 5: انتشار الجريمة، خلخلة القيم، انتشار الإحباط والفقر.", false, "ص5");
+    addQCM("الآثار الاقتصادية للفساد تشمل:", ["سوء توزيع الموارد، تدني الكفاءة، ضعف جودة البنية التحتية", "نمو اقتصادي", "تقليل المديونية", "استقرار مالي"], 0, "صفحة 5: سوء توزيع الموارد، تدني الكفاءة، ضعف جودة البنية التحتية.", false, "ص5");
+    addQCM("يرجع بعض الباحثين فشل منظمات الأعمال إلى عدم كفاءة الإدارة بنسبة:", ["70%", "50%", "30%", "90%"], 0, "صفحة 5: 70%.", false, "ص5");
+
+    // ------------------- الملف 6: محاربة الفساد من طرف الهيئات والمنظمات.pdf -------------------
+    addQCM("منظمة الشفافية الدولية (Transparency International) أنشئت في عام:", ["1993", "2000", "1985", "1998"], 0, "صفحة 4: أنشئت في سنة 1993.", false, "ص4");
+    addQCM("منظمة الشفافية الدولية تسمى أيضاً:", ["التحالف العالمي ضد الفساد", "مركز مكافحة الفساد", "المرصد العالمي", "يونود"], 0, "صفحة 4: 'التحالف العالمي ضد الفساد'.", false, "ص4");
+    addQCM("أول مؤتمر للأمم المتحدة لمكافحة الفساد عقد في سويسرا عام:", ["1955", "1990", "2002", "1988"], 0, "صفحة 6: عقد أول مؤتمر في سويسرا عام 1955.", false, "ص6");
+    addQCM("البنك الدولي أطلق حملته ضد ما يسمى:", ["'سرطان الفساد'", "'إرهاب الفساد'", "'وباء الفساد'", "'جائحة الفساد'"], 0, "صفحة 7: حملته ضد 'سرطان الفساد'.", false, "ص7");
+    addQCM("استراتيجية البنك الدولي لمكافحة الفساد ترتكز على:", ["أربعة محاور رئيسية", "خمسة", "ثلاثة", "سبعة"], 0, "صفحة 7: أربعة محاور رئيسية.", false, "ص7");
+
+    // ------------------- مصطلحات وترجمة (من جميع الملفات) -------------------
+    addQCM("مصطلح 'Tyrannie' بالفرنسية ورد بمعنى:", ["اغتصاب السلطة", "الرشوة", "الفساد", "الاختلاس"], 0, "صفحة 6: اغتصاب السلطة (Tyrannie).", true, "ص6");
+    addQCM("في الإنجليزية، 'Bribery' تعني:", ["الرشوة", "الغش", "الفساد", "المحسوبية"], 0, "صفحة 7: Bribery = الرشوة.", true, "ص7");
+    addQCM("'Favoritism' بالإنجليزي تعني:", ["المحسوبية والتحيز", "العدالة", "الشفافية", "المساواة"], 0, "صفحة 7: المحسوبية والتحيز.", true, "ص7");
+    addQCM("'Moyens de corrompre un juge' الفرنسية تعني:", ["وسائل رشوة قاضي", "فساد القضاء", "تحريف العدالة", "الابتزاز"], 0, "صفحة 6: وسائل رشوة قاضي.", true, "ص6");
+    addQCM("'Dénaturation de contrat' في الفرنسي تدل على:", ["تحريف لحيثيات عقد", "فساد مالي", "تزوير العملة", "غش تجاري"], 0, "صفحة 6: تحريف لحيثيات عقد.", true, "ص6");
+    addQCM("'Misuse of authority and power' =", ["إساءة استعمال السلطة والنفوذ", "الرشوة", "الاختلاس", "المحسوبية"], 0, "صفحة 7: إساءة استعمال السلطة والنفوذ.", true, "ص7");
+    addQCM("'Fraud' بالإنجليزي تعني:", ["الاحتيال والغش", "الرشوة", "الفساد", "الابتزاز"], 0, "صفحة 7: الاحتيال والغش.", true, "ص7");
+
+    // ------------------- أسئلة إضافية شاملة (تغطية كاملة) -------------------
+    
+    // مفاهيم إضافية
+    addQCM("الفرق بين الفساد الإداري والفساد المالي:", ["الإداري يتعلق بالسلوك الوظيفي، المالي يتعلق بالأموال", "لا فرق بينهما", "الإداري أخطر", "المالي أقل تأثيراً"], 0, "الفساد الإداري يتعلق بالانحرافات السلوكية، والمالي يتعلق بالأموال والتعاملات المالية.", false, "مفاهيم");
+    addQCM("من خصائص الفساد أنه:", ["سري، متعدد الأشكال، عابر للحدود", "علني، محدود، محلي", "بسيط، واضح، سهل", "مؤقت، بسيط، محدود"], 0, "الفساد يتميز بالسرية، تعدد الأشكال، والعبور للحدود الوطنية.", false, "خصائص");
+    addQCM("الفساد الصغير (Petty Corruption) يختلف عن الفساد الكبير (Grand Corruption) في:", ["القيمة والتأثير والمستوى", "النوع فقط", "الشكل فقط", "الزمن فقط"], 0, "الفساد الصغير يتعلق بمعاملات يومية صغيرة، بينما الكبير يتعلق بصفقات ضخمة.", false, "مقارنة");
+    
+    // أنواع تفصيلية
+    addQCM("الفساد التكنولوجي يشمل:", ["القرصنة، الاحتيال الإلكتروني، غسيل الأموال الرقمي", "الرشوة التقليدية", "المحسوبية اليدوية", "الاختلاس الورقي"], 0, "الفساد التكنولوجي يستخدم التقنيات الحديثة في ممارسات الفساد.", false, "تكنولوجيا");
+    addQCM("الفساد الرياضي يتمثل في:", ["الرشوة في المباريات، التلاعب بالنتائج، المنشطات", "اللعب النظيف", "الالتزام بالقوانين", "الروح الرياضية"], 0, "الفساد الرياضي يشمل الرشوة والتلاعب بالنتائج والمنشطات.", false, "رياضي");
+    addQCM("الفساد الأكاديمي يعني:", ["الانتحال، الغش، شراء الشهادات", "البحث العلمي", "النزاهة الأكاديمية", "الاستقامة"], 0, "الفساد الأكاديمي يشمل الانتحال والغش وشراء الشهادات.", false, "أكاديمي");
+    
+    // مظاهر تفصيلية
+    addQCM("الابتزاز كشكل من أشكال الفساد يعني:", ["التهديد للحصول على منافع غير مشروعة", "الهدية الطوعية", "التعاون الطوعي", "المساعدة المتبادلة"], 0, "الابتزاز هو استخدام التهديد للحصول على منافع غير مشروعة.", false, "ابتزاز");
+    addQCM("الرشوة السلبية تختلف عن الرشوة الإيجابية في:", ["السلبية طلب، الإيجابية عرض", "القيمة فقط", "الشكل فقط", "الزمن فقط"], 0, "الرشوة السلبية هي طلب الرشوة، والإيجابية هي عرض الرشوة.", false, "مقارنة");
+    addQCM("الفساد الانتقالي يحدث:", ["أثناء الانتقال الديمقراطي أو الاقتصادي", "في الدول المستقرة", "في الدول المتقدمة", "في الأنظمة الثابتة"], 0, "الفساد الانتقالي يظهر خلال فترات التحول السياسي والاقتصادي.", false, "انتقالي");
+    
+    // أسباب تفصيلية
+    addQCM("ضعف الحكم الرشيد كسبب للفساد يعني:", ["غياب الشفافية والمساءلة", "وجود ديمقراطية", "قوة المؤسسات", "استقرار سياسي"], 0, "ضعف الحكم الرشيد يعني غياب الشفافية والمساءلة الفعالة.", false, "حكم رشيد");
+    addQCM("الفساد الهيكلي ناتج عن:", ["عيوب في بنية النظام الاقتصادي والسياسي", "أفراد فاسدين", "قرارات مؤقتة", "ظروف طارئة"], 0, "الفساد الهيكلي ناتج عن عيوب أساسية في بنية النظام.", false, "هيكلي");
+    addQCM("العولمة كعامل مؤثر في الفساد:", ["تسهل غسيل الأموال والفساد العابر للحدود", "تقلل الفساد", "تمنع الفساد", "لا علاقة لها"], 0, "العولمة تسهل عمليات غسيل الأموال والفساد العابر للحدود.", false, "عولمة");
+    
+    // آثار تفصيلية
+    addQCM("الفساد يؤثر على التنمية المستدامة من خلال:", ["تدمير الموارد الطبيعية، إضعاف المؤسسات", "تعزيز التنمية", "حماية البيئة", "تقوية المؤسسات"], 0, "الفساد يدمر الموارد الطبيعية ويضعف المؤسسات اللازمة للتنمية.", false, "تنمية");
+    addQCM("الفساد والصحة العامة:", ["يؤدي لضعف الرعاية الصحية وانتشار الأمراض", "يحسن الصحة", "لا يؤثر", "يعزز الطب"], 0, "الفساد في القطاع الصحي يؤدي لضعف الخدمات وانتشار الأمراض.", false, "صحة");
+    addQCM("الفساد والتعليم:", ["يؤدي لانخفاض جودة التعليم وانتشار الشهادات المزيفة", "يحسن التعليم", "لا علاقة له", "يعزز المعرفة"], 0, "الفساد التعليمي يضعف جودة التعليم وينشر الشهادات المزيفة.", false, "تعليم");
+    
+    // مكافحة تفصيلية
+    addQCM("استراتيجيات مكافحة الفساد تشمل:", ["الوقاية، الرقابة، العقاب، المشاركة المجتمعية", "العقاب فقط", "الوقاية فقط", "الرقابة فقط"], 0, "مكافحة الفساد تتطلب استراتيجية متكاملة تشمل الوقاية والرقابة والعقاب.", false, "استراتيجيات");
+    addQCM("دور المجتمع المدني في مكافحة الفساد:", ["الرقابة، التوعية، الضغط، المشاركة", "الصمت فقط", "الموافقة", "المشاركة المحدودة"], 0, "المجتمع المدني يلعب دوراً حيوياً في الرقابة والتوعية ضد الفساد.", false, "مجتمع مدني");
+    addQCM("التكنولوجيا في مكافحة الفساد:", ["الشفافية، الرقابة الإلكترونية، البيانات المفتوحة", "تزيد الفساد", "لا فائدة منها", "معقدة"], 0, "التكنولوجيا تساعد في زيادة الشفافية والرقابة الفعالة.", false, "تكنولوجيا");
+    
+    // قوانين وتشريعات
+    addQCM("اتفاقية الأمم المتحدة لمكافحة الفساد (UNCAC) تركز على:", ["الوقاية، criminalization، التعاون الدولي، استرجاع الأصول", "الوقاية فقط", "العقاب فقط", "التعليم فقط"], 0, "اتفاقية UNCAC تغطي الوقاية، التجريم، التعاون الدولي، واسترجاع الأصول.", false, "UNCAC");
+    addQCM("قانون مكافحة الفساد في معظم الدول يشمل:", ["تجريم الرشوة، الاختلاس، إفشاء السر، تضارب المصالح", "الرشوة فقط", "الاختلاس فقط", "المحاسبة فقط"], 0, "قوانين مكافحة الفساد تشمل تجريم多种 أشكال الفساد.", false, "قوانين");
+    
+    // دراسات حالة
+    addQCM("دراسة حالة الفساد في القطاع العام تظهر:", ["ضعف الرقابة، غياب الشفافية، تضارب المصالح", "كفاءة عالية", "شفافية كاملة", "نزاهة تامة"], 0, "دراسات الحالة تظهر أسباب الفساد في القطاع العام.", false, "دراسات حالة");
+    addQCM("تجارب دول ناجحة في مكافحة الفساد تظهر أهمية:", ["الإرادة السياسية، المؤسسات القوية، المشاركة المجتمعية", "القوانين فقط", "العقاب فقط", "التعليم فقط"], 0, "النجاح يتطلب إرادة سياسية ومؤسسات قوية ومشاركة مجتمعية.", false, "تجارب");
+    
+    // إحصائيات وأرقام
+    addQCM("التكلفة السنوية للفساد عالمياً تقدر ب:", ["تريليونات الدولارات", "ملايين الدولارات", "آلاف الدولارات", "مئات الدولارات"], 0, "الفساد يكلف العالم تريليونات الدولارات سنوياً.", false, "إحصائيات");
+    addQCM("الدول الأكثر فساداً حسب مؤشر مدركات الفساد:", ["تتميز بضعف الحكم الرشيد والمؤسسات", "تتميز بقوة المؤسسات", "تتميز بالديمقراطية", "تتميز بالشفافية"], 0, "الدول الأكثر فساداً تتميز بضعف الحكم الرشيد والمؤسسات.", false, "إحصائيات");
+    
+    // مستقبل الفساد
+    addQCM("الفساد الرقمي يشمل:", ["العملات المشفرة، الاحتيال عبر الإنترنت، غسيل الأموال الرقمي", "الرشوة التقليدية", "الفساد الورقي", "المحسوبية الكلاسيكية"], 0, "الفساد الرقمي يستخدم التقنيات الحديثة في عمليات الفساد.", false, "مستقبل");
+    addQCM("الذكاء الاصطناعي في مكافحة الفساد:", ["يساعد في الكشف المبكر، تحليل البيانات، الرقابة الآلية", "يزيد الفساد", "لا فائدة منه", "معقد جداً"], 0, "الذكاء الاصطناعي يمكن أن يكون أداة فعالة في مكافحة الفساد.", false, "مستقبل");
+    
+    // أسئلة تطبيقية
+    addQCM("إذا اكتشفت حالة فساد في مكان عملك، أفضل إجراء هو:", ["الإبلاغ عبر القنوات الرسمية، توثيق الأدلة", "الصمت", "المشاركة", "تجاهل الأمر"], 0, "الإبلاغ الرسمي وتوثيق الأدلة هو الإجراء الصحيح.", false, "تطبيقي");
+    addQCM("للمساهمة في مكافحة الفساد كمواطن:", ["الامتناع عن الرشوة، الإبلاغ، المشاركة المجتمعية", "دفع الرشوة", "الصمت", "الموافقة"], 0, "المواطن يمكن المساهمة عبر الامتناع عن الرشوة والإبلاغ والمشاركة.", false, "تطبيقي");
+    
+    // مصطلحات إضافية
+    addQCM("'Nepotism' بالإنجليزي يعني:", ["المحسوبية القائمة على القرابة", "العدالة", "الاستقلال", "الكفاءة"], 0, "Nepotism هو تفضيل الأقارب في التعيينات.", true, "مصطلحات");
+    addQCM("'Clientélisme' بالفرنسي يعني:", ["نظام المحسوبية والولاء الشخصي", "الديمقراطية", "الشفافية", "المساواة"], 0, "Clientélisme هو نظام المحسوبية القائم على الولاء الشخصي.", true, "مصطلحات");
+    addQCM("'Embezzlement' بالإنجليزي =", ["الاختلاس", "الرشوة", "الغش", "المحسوبية"], 0, "Embezzlement هو الاختلاس.", true, "مصطلحات");
+    addQCM("'Extorsion' بالفرنسي يعني:", ["الابتزاز", "الهدية", "المساعدة", "التعاون"], 0, "Extorsion هو الابتزاز.", true, "مصطلحات");
+    addQCM("'Money laundering' بالإنجليزي =", ["غسيل الأموال", "الادخار", "الاستثمار", "التبرع"], 0, "Money laundering هو غسيل الأموال.", true, "مصطلحات");
+    addQCM("'Conflict of interest' بالإنجليزي يعني:", ["تضارب المصالح", "التعاون", "الاتفاق", "التنسيق"], 0, "Conflict of interest هو تضارب المصالح.", true, "مصطلحات");
+    addQCM("'Whistleblowing' بالإنجليزي =", ["الإبلاغ عن الفساد", "الصمت", "الموافقة", "المشاركة"], 0, "Whistleblowing هو الإبلاغ عن الفساد.", true, "مصطلحات");
+    addQCM("'Good governance' بالإنجليزي يعني:", ["الحكم الرشيد", "الحكم الفاسد", "الحكم العشوائي", "الحكم الضعيف"], 0, "Good governance هو الحكم الرشيد.", true, "مصطلحات");
+
+    // ====================== دالة الخلط العشوائي ======================
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    // خلط أولي
+    questionsBank = shuffleArray(questionsBank);
+
+    // ------------------- الصوت -------------------
+    function playSound(type) {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.type = "sine";
+            if (type === "correct") {
+                osc.frequency.value = 880;
+                gain.gain.value = 0.1;
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4);
+                osc.stop(audioCtx.currentTime + 0.4);
+            } else {
+                osc.frequency.value = 480;
+                gain.gain.value = 0.1;
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.35);
+                osc.stop(audioCtx.currentTime + 0.35);
+            }
+            audioCtx.resume();
+        } catch(e) { }
+    }
+
+    // ------------------- حالة اللعبة -------------------
+    let currentIndex = 0, userScore = 0, answerLock = false, selectedIdx = null, mistakesArray = [];
+    const quizDynamic = document.getElementById("quizDynamic");
+    const finalMessageDiv = document.getElementById("finalMessage");
+    const currentQSpan = document.getElementById("currentQ");
+    const totalQSpan = document.getElementById("totalQ");
+    const scoreSpan = document.getElementById("scoreCount");
+    const percentSpan = document.getElementById("percentScore");
+    
+    totalQSpan.innerText = questionsBank.length;
+
+    function updateStats() {
+        scoreSpan.innerText = userScore;
+        let percent = Math.round((userScore / questionsBank.length) * 100);
+        percentSpan.innerText = percent;
+    }
+
+    function resetQuiz() {
+        // خلط الأسئلة من جديد عند إعادة الاختبار
+        questionsBank = shuffleArray(questionsBank);
+        currentIndex = 0;
+        userScore = 0;
+        answerLock = false;
+        selectedIdx = null;
+        mistakesArray = [];
+        updateStats();
+        finalMessageDiv.innerHTML = "";
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        if (currentIndex >= questionsBank.length) {
+            let percentFinal = Math.round((userScore / questionsBank.length) * 100);
+            let html = `<div class="final-score">🏆 انتهى الاختبار! النتيجة: ${userScore}/${questionsBank.length} (${percentFinal}%)</div>`;
+            if (mistakesArray.length > 0) {
+                html += `<div class="mistakes-panel"><h2>📘 مراجعة الأخطاء (${mistakesArray.length} خطأ)</h2>`;
+                mistakesArray.forEach((m, i) => {
+                    html += `<div class="mistake-item">
+                        <strong>❌ ${m.question}</strong><br>
+                        <span style="color:#ffaa88;">➤ إجابتك: ${m.userAnswer}</span><br>
+                        <span style="color:#aaffaa;">✓ الصواب: ${m.correctAnswer}</span><br>
+                        <span style="color:#ccccff;">📖 ${m.explanation}</span>
+                    </div>`;
+                });
+                html += `</div><button class="btn-reset" id="resetAfter">🔄 إعادة الاختبار (ترتيب جديد)</button>`;
+            } else {
+                html += `<div class="mistakes-panel"><h2>🎉 ممتاز! لا توجد أخطاء، إلمام كامل بالمادة.</h2>
+                <button class="btn-reset" id="resetAfter">🔄 إعادة الاختبار (ترتيب جديد)</button></div>`;
+            }
+            finalMessageDiv.innerHTML = html;
+            quizDynamic.innerHTML = "";
+            document.getElementById("resetAfter")?.addEventListener("click", resetQuiz);
+            return;
+        }
+        
+        const q = questionsBank[currentIndex];
+        currentQSpan.innerText = currentIndex + 1;
+        let termTag = q.isTerm ? "🌐 ترجمة / مصطلح (لغات أجنبية)" : `📖 سؤال عربي ${q.reference ? `[${q.reference}]` : ""}`;
+        let html = `<div class="question-card">
+            <div class="badge">${termTag}</div>
+            <div class="question-text">❓ ${q.question}</div>
+            <div class="options-area" id="optionsArea">`;
+        q.options.forEach((opt, idx) => {
+            let letter = String.fromCharCode(65 + idx);
+            html += `<div class="option" data-opt-index="${idx}"><span class="prefix">${letter}</span> ${opt}</div>`;
+        });
+        html += `</div><div class="action-buttons">
+            <button class="btn-next" id="nextBtn">➡️ التالي</button>
+            <button class="btn-reset" id="resetBtn">🔄 إعادة الاختبار</button>
+        </div><div id="explainArea"></div></div>`;
+        quizDynamic.innerHTML = html;
+        answerLock = false;
+        selectedIdx = null;
+        
+        document.querySelectorAll(".option").forEach(opt => {
+            opt.addEventListener("click", (e) => {
+                if (answerLock) return;
+                const idx = parseInt(opt.dataset.optIndex);
+                selectedIdx = idx;
+                const isCorrect = (idx === q.correctIndex);
+                if (isCorrect) {
+                    userScore++;
+                    playSound("correct");
+                    updateStats();
+                } else {
+                    playSound("wrong");
+                    mistakesArray.push({
+                        question: q.question,
+                        userAnswer: q.options[idx],
+                        correctAnswer: q.options[q.correctIndex],
+                        explanation: q.explanation
+                    });
+                }
+                answerLock = true;
+                document.querySelectorAll(".option").forEach(el => el.classList.add("disabled-opt"));
+                if (isCorrect) {
+                    opt.classList.add("correct-feedback");
+                } else {
+                    opt.classList.add("wrong-feedback");
+                    const correctDiv = document.querySelector(`.option[data-opt-index='${q.correctIndex}']`);
+                    if (correctDiv) correctDiv.classList.add("correct-feedback");
+                }
+                document.getElementById("explainArea").innerHTML = `<div class="explanation">📖 ${q.explanation}</div>`;
+            });
+        });
+        
+        document.getElementById("nextBtn")?.addEventListener("click", () => {
+            if (!answerLock && selectedIdx === null) {
+                alert("⚠️ الرجاء اختيار إجابة قبل الانتقال!");
+                return;
+            }
+            if (!answerLock) return;
+            currentIndex++;
+            renderQuestion();
+        });
+        document.getElementById("resetBtn")?.addEventListener("click", resetQuiz);
+    }
+    
+    renderQuestion();
+</script>
+</body>
+</html>
